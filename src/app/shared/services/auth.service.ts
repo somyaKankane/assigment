@@ -30,7 +30,6 @@ export class AuthService {
 
 
   user_list(data) {
-    // return this.restangular.one('search','users').get().toPromise();
     return this.http.get(this.url+"search/users?q="+data);
  
   }

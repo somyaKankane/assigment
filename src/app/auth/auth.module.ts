@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
-// social login, check document here https://github.com/abacritt/angularx-social-login#readme
+
 
 import { UtilsModule } from '../utils/utils.module';
 // import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';

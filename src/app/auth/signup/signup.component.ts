@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services';
 import { ToastyService } from 'ng2-toasty';
 import { TranslateService } from '@ngx-translate/core';
-// import { IDropdownSettings } from 'ng-multiselect-dropdown';
+
 import * as _ from 'lodash';
 import { UtilService } from '../../shared/services';
 
@@ -42,15 +42,13 @@ export class SignupComponent {
 
   keyPress(event: any) {
     if (event.charCode === 13) {
-      // this.search();
-      //  this.serching
       this.current = -1;
-     console.log(this.q);
-      this.utilService.setLoading(true);
-    this.isLoading = true;
 
-    this.auth.user_list(this.q).subscribe(resp => {
-     console.log(resp)
+      this.utilService.setLoading(true);
+      this.isLoading = true;
+
+      this.auth.user_list(this.q).subscribe(resp => {
+
     
         this.total_count=resp["items"].length;
         this.data_recived=resp["items"];
@@ -75,7 +73,7 @@ export class SignupComponent {
       this.isLoading = true;
 
       this.auth.profile_details(name).subscribe(Response => {
-      console.log(Response);
+
       this.selected_profile_data=Response;
       if(this.selected_profile_data.length == 0){
         this.showMesage=1;
@@ -100,8 +98,6 @@ export class SignupComponent {
     window.scroll(0,0);
   }
   onChange(newValue) {
-    console.log(newValue);
-  
 
     let temp_data;
     temp_data= this.data_recived;

@@ -55,7 +55,7 @@ export function RestangularConfigFactory(RestangularProvider) {
     if (response.status === 401) {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('isLoggedin');
-      // window.location.href = '/auth/login';
+     
 
       return false; // error handled
     }
@@ -65,7 +65,7 @@ export function RestangularConfigFactory(RestangularProvider) {
 }
 
 export function createTranslateLoader(http: HttpClient) {
-  // return new TranslateHttpLoader(http, `${window.appConfig.apiBaseUrl}/i18n/`, '.json');
+ 
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 }
 
