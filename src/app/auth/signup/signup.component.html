@@ -1,0 +1,151 @@
+<header id="header">
+  <!--header-->
+
+  <!--/header_top-->
+  <div class="header-middle">
+    <!--header-middle-->
+    
+        <div class="container">
+          <div class="row">
+
+            <div class="col-sm-6 sort">
+              <select class="form-control selecter" [(ngModel)]="option" (change)="onChange($event.target.value)" >
+                <option value="1">Name (A - Z)</option>
+                <option value="2">Name (Z - A)</option>
+                <!-- <option value="2">Sort By Profile URL</option> -->
+              </select>
+           
+            </div>
+
+            <div class="col-sm-6">
+              <div class=" search_box pull-left">
+                <input class="form-control" type="text" [(ngModel)]="q" (keypress)="keyPress($event)" placeholder="{{'Search' | translate}}" />
+              </div>
+            </div>
+           
+          </div> 
+         
+          
+          
+        </div>
+   
+  </div>
+  <!--/header-middle-->
+</header>
+
+
+
+
+
+<div class="row row-detail-main justify-content-center pad-bt-45 p_80 ">
+  <div *ngIf="serching == 1" class="col-md-6">
+    <p>Total Results: {{total_count}}</p>
+    <div class="p_20"  *ngFor="let item of data_recived  | paginate: { itemsPerPage: 3, currentPage: p } ;let i = index">
+    <div class="card" >
+ 
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col col-md-2">
+              <div class="m-r-20 align-self-center">
+                <span class="lstick m-r-20"></span>
+                <img  class="img_des" [src]="item.avatar_url"  />
+              </div>
+            </div>
+
+            <div class="col col-md-10">
+              <div class="align-self-center inline-block">
+                <h5 class="text-highlight m-t-10"> {{item.login}}</h5>
+                <div>
+                  <p class="inline-block">
+                    <span class="label label-danger">Profile URL:</span>&nbsp;&nbsp;{{item.url}}
+                  </p>
+                </div>
+                
+                <div class="row">
+                  <div class="col col-md-9">
+                    <div class="inline-block">
+                      <span class="label label-danger">User Id:</span>&nbsp;&nbsp;{{item.id}}
+                    </div>
+                    <div class="inline-block">
+                      <span class="label label-danger">Repos URL:</span>&nbsp;&nbsp;{{item.repos_url}}
+                    </div>
+                  </div>
+
+                  <div class="col col-md-3">
+                   
+                    <button type="button" class="btn btn-outline-primary" 
+                    (click) = "profile_data(i,item.login)"> Details
+                    </button>
+             
+                   
+
+               </div>
+                </div>
+
+              </div>
+            </div>
+
+            
+          </div>
+
+         
+
+        </div>
+    </div>
+
+    
+
+    <div id="collapse1" class="panel-collapse" [class.collapse]='current != i'>
+      <div class="panel-body">
+        <div class="card" >
+          <div class="card-body " *ngIf="showMesage ==0">
+            <div class="row p_10 box" *ngFor="let items of selected_profile_data  | slice:0:5 ">
+
+              <div class="col col-md-6 text-ads">
+                <!-- <div class="inline-block">
+                  <span class="label label-danger">Full Name</span>
+                </div> -->
+                <div class="inline-block">
+                  <span class="label label-danger">{{items.name}}</span>
+                </div>
+              </div>
+
+              <div class="col col-md-6">
+                <!-- <div class="inline-block">
+                  <span class="label label-danger">{{items.full_name}}</span>
+                </div> -->
+                <div class="inline-block">
+                  <span class="label label-danger">{{items.language}}</span>
+                </div>
+              </div>
+
+            </div>
+
+            
+           
+          </div>
+          <div class="card-body " *ngIf="showMesage ==1">
+            <div class="col col-md-6 ">
+
+              <div class="inline-block">
+              no data found
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+         
+  </div>
+
+    <pagination-controls class="right-header" (click) = "changePage()" (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+  <div *ngIf="serching == 0" class="row row-detail-main justify-content-center pad-bt-45 p_80">
+    <div class="col-md-12">
+      <p>Please Search Something</p>
+    </div>  
+  </div>
+</div>
