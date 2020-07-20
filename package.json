@@ -34,7 +34,7 @@
     "immutable": "^3.8.2",
     "jasmine": "^3.1.0",
     "jquery": "^3.2.1",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "ng-multiselect-dropdown": "^0.2.10",
     "ng-multiselect-dropdown-angular7": "^0.1.5",
     "ng2-charts": "^2.2.3",
